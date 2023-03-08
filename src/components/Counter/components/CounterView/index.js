@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
 import styles from "./styles.module.css";
-const CounterView =({counterValue,valueType,handelIncrement,handelReset,handelDecrement}) => {
+const CounterView =({counterValue,valueType,handelIncrement,handelReset,handelDecrement,opacityValue}) => {
     return(
-        <div className={styles.wrapper}>
+        <div style={{opacity:opacityValue}} className={styles.wrapper}>
             <div className={styles.display}>{counterValue}</div>
             <div className={styles.display}>{valueType}</div>
             <div className={styles.controlButtons}>
