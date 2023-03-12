@@ -1,9 +1,12 @@
+import CounterContainer from "../Counter/containers/CounterContainer";
+import ControlPanelView from "../ControlPanel/components";
 
 import styles from "./styles.module.css";
-import CounterContainer from "../Counter/containers/CounterContainer";
+
 const App = () =>{
    return <div className={styles.wrapper}>
-       <CounterContainer/>
+       <ControlPanelView/>
+       {/*<CounterContainer/>*/}
    </div>;
 };
 
