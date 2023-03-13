@@ -1,24 +1,40 @@
 import PropTypes from "prop-types";
+import {memo} from "react";
 
 import styles from "./styles.module.css";
-const CounterView =({counterValue,valueType,handelIncrement,handelReset,handelDecrement,opacityValue}) => {
+
+
+const CounterView =({
+    counterValue,
+    handelIncrement,
+    handelReset,
+    handelDecrement,
+    isEven,}) => {
+
     return(
-        <div style={{opacity:opacityValue}} className={styles.wrapper}>
+        <div  className={styles.wrapper}
+              style={{background: isEven ? "mediumpurple" : "purple" }}
+        >
             <div className={styles.display}>{counterValue}</div>
-            <div className={styles.display}>{valueType}</div>
+            <div className={styles.display}>{isEven ? "Even number" : "Odd number"}</div>
             <div className={styles.controlButtons}>
-                <button className={styles.controlButton} onClick={handelDecrement}>-</button>
-                <button className={styles.controlButton} onClick={handelReset}>Restart</button>
-                <button className={styles.controlButton} onClick={handelIncrement}>+</button>
+                <button className={styles.controlButton} onClick={handelDecrement}>
+                    -
+                </button>
+                <button className={styles.controlButton} onClick={handelReset}>
+                    Restart
+                </button>
+                <button className={styles.controlButton} onClick={handelIncrement}>
+                    +
+                </button>
             </div>
         </div>
     );
 };
 CounterView.propTypes = {
     counterValue: PropTypes.number.isRequired,
-    valueType:PropTypes.string.isRequired,
     handelIncrement: PropTypes.func.isRequired,
     handelReset: PropTypes.func.isRequired,
     handelDecrement:PropTypes.func.isRequired
 }
-export default CounterView;
+export default memo(CounterView);

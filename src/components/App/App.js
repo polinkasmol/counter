@@ -5,8 +5,8 @@ import styles from "./styles.module.css";
 
 const App = () =>{
    return <div className={styles.wrapper}>
-       <ControlPanelView/>
-       {/*<CounterContainer/>*/}
+       {/*<ControlPanelView/>*/}
+       <CounterContainer/>
    </div>;
 };
 

@@ -1,44 +1,39 @@
-import { Component } from "react";
+import {useCallback,useState } from "react";
 import CounterView from "../components/CounterView";
 
 
 
-class CounterContainer extends Component {
-    constructor(props) {
-        super(props);
+const CounterContainer = () => {
+    const [counterValue, setCounterValue] = useState(0)
+    let valueType = true
 
-        this.state = {
-            countValue: 0,
-            valueType: 'number type',
-            opacityValue: 1
-        }
-    }
-    handelIncrement = () =>{
-        this.setState({countValue: this.state.countValue + 1});
-        this.checkValueType()
-    };
-    handelReset = () =>{
-        this.setState({countValue: 0, valueType: 'number type'});
-    };
-    handelDecrement = () =>{
-        if (this.state.countValue > 0) {
-            this.setState({countValue: this.state.countValue - 1});
-            this.checkValueType()
-        }
-    };
+    if (counterValue % 2 === 0) valueType = false;
+    else  valueType = true;
 
-    checkValueType =() =>{
-        this.setState({valueType: this.state.countValue % 2 === 0 ? 'odd number' :"even number"})
-        this.setState({opacityValue: this.state.valueType === 'odd number' ? 1 : 0.5})
-    }
-    render() {
-        return<CounterView
-            counterValue={this.state.countValue}
-            valueType={this.state.valueType}
-            handelIncrement={this.handelIncrement}
-            handelReset={this.handelReset}
-            handelDecrement={this.handelDecrement}
-            opacityValue={this.state.opacityValue}/>;
-    }
-}
+    const handelIncrement = useCallback(() =>{
+        setCounterValue((state) => state + 1 );
+    }, []);
+
+    const handelReset = useCallback(() =>{
+        setCounterValue(0);
+    },[]);
+
+    const handelDecrement = useCallback(() =>{
+        setCounterValue((state) => state - 1);
+    }, []);
+
+    // const handelAddAmount = useCallback((amount) =>{
+    //     setCountValue((state) => state + amount);
+    // }, []);
+
+    return (
+        <CounterView
+        counterValue = {counterValue}
+        handelIncrement = {handelIncrement}
+        handelReset = {handelReset}
+        handelDecrement = {handelDecrement}
+        isEven={valueType}
+    />
+);
+};
 export default CounterContainer;
