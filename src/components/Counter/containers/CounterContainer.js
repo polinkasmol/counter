@@ -5,10 +5,11 @@ import CounterView from "../components/CounterView";
 
 const CounterContainer = () => {
     const [counterValue, setCounterValue] = useState(0)
-    let valueType = true
+    let valueType;
 
-    if (counterValue % 2 === 0) valueType = false;
-    else  valueType = true;
+    valueType = counterValue % 2 !== 0;
+
+    if (counterValue < 0) setCounterValue(0)
 
     const handelIncrement = useCallback(() =>{
         setCounterValue((state) => state + 1 );

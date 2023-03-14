@@ -18,8 +18,6 @@ root.render(
         <MainLayout>
             <Router/>
         </MainLayout>
-
-
     </BrowserRouter>
 
 );

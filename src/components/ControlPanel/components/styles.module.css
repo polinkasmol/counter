@@ -1,11 +1,3 @@
-.wrapper{
-    padding: 15px;
-}
-.controlButtons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .controlButton{
     text-align: center;
